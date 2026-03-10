@@ -13,14 +13,14 @@ class RentalSystem {
         const returnD = new Date(returnDate);
 
         if (initial >= returnD) {
-            throw new Error(" Return date must be after initial date");
+            throw new Error("Return date must be after initial date");
         }
         const vehicle = this.vehicles.find(v => v.id === id);
         if (!vehicle) {
-            throw new Error(" Vehicle not found");
+            throw new Error("Vehicle not found");
         }
         if (vehicle.rented) {
-            throw new Error(" Vehicle is already rented");
+            throw new Error("Vehicle is already rented");
         }
         vehicle.rented = true;
     }
@@ -28,12 +28,12 @@ class RentalSystem {
     calculateRentalCost(id, initialDate, returnDate) {
         const vehicle = this.vehicles.find(v => v.id === id);
         if (!vehicle) {
-            throw new Error(" Vehicle not found");
+            throw new Error("Vehicle not found");
         }
         const initial = new Date(initialDate);
         const returnD = new Date(returnDate);
         if (initial >= returnD) {
-            throw new Error(" Return date must be after initial date");
+            throw new Error("Return date must be after initial date");
         }
 
         const days = Math.ceil((returnD - initial) / (1000 * 60 * 60 * 24));
@@ -43,7 +43,7 @@ class RentalSystem {
 
     returnVehicle(id) {
         const vehicle = this.vehicles.find(v => v.id === id);
-        if (!vehicle) {
+        if (vehicle) {
             vehicle.rented = false;
         } 
 
